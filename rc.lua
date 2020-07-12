@@ -9,7 +9,7 @@
 local awesome, client, mouse, screen, tag = awesome, client, mouse, screen, tag
 local ipairs, string, os, table, tostring, tonumber, type = ipairs, string, os, table, tostring, tonumber, type
 
---local battery_widget = require("awesome-wm-widgets.battery-widget.battery") --Battery widget
+local battery_widget = require("battery-widget.battery") --Battery widget
 
 local gears         = require("gears")
 local awful         = require("awful")
@@ -99,6 +99,7 @@ local cycle_prev   = true -- cycle trough all previous client or just the first 
 local editor       = os.getenv("EDITOR") or "nano"
 local gui_editor   = os.getenv("GUI_EDITOR") or "atom"
 local browser      = os.getenv("BROWSER") or "firefox"
+local file_manager = os.getenv("FILE_MANAGER") or "thunar"
 local scrlocker    = "slock"
 
 awful.util.terminal = terminal
@@ -526,6 +527,8 @@ globalkeys = my_table.join(
               {description = "run browser", group = "launcher"}),
     awful.key({ modkey }, "a", function () awful.spawn(gui_editor) end,
               {description = "run gui editor", group = "launcher"}),
+    awful.key({ modkey }, "e", function () awful.spawn(file_manager) end,
+              {description = "run file manager", group = "launcher"}),
 
     -- Default
     --[[ Menubar
